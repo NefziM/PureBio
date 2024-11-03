@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Login client || Pure Bio</title>
+    <title>Login client || Ouma_art</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900|RobotoDraft:400,100,300,500,700,900'>
@@ -39,21 +39,18 @@
     <header id="header" class="header-scroll top-header headrom" style="background-color:#808080">
     <nav>
     <div id="logo">
-      <h1><a href="index.php" style="color:chite;">PB</a></h1>
+      <h1><a href="index.php" style="color:chite;">OA</a></h1>
     </div>
     <div class="sub-headder position-relative">
-      <h6><a href="index.php" style="color:#F3BC48">Pure<br>Bio</a></h6>
+      <h6><a href="index.php" style="color:#F3BC48">Ouma<br>Art</a></h6>
     </div>
     <label for="drop" class="toggle">Menu</label>
     <input type="checkbox" id="drop">
     <ul class="menu mt-2">
       <li class="active"><a href="index.php">Acceuil</a></li>
       <li>
-      <a href="#">Login &#9662;</a>
-      <ul class="sub-menu">
-        <li><a href="loginF.php">Fournisseur</a></li>
-        <li><a href="login.php">Client</a></li>
-      </ul>
+      <a href="login.php">Login</a>
+     
     </li>
     </ul>
   </nav>
@@ -80,8 +77,8 @@ if (isset($_POST['submit'])) {
       $row = mysqli_fetch_array($result);
 
       if (is_array($row)) {
-          $_SESSION["user_id"] = $row['u_id'];
-          header("refresh:1;url=index.php");
+        $_SESSION["id"] = $row['id'];
+        header("Location: index.php"); 
       } else {
           $message = "Email ou mot de passe incorrect !";
       }
@@ -95,7 +92,7 @@ if (isset($_POST['submit'])) {
                     <div class="toggle"  >
                     </div>
                     <div class="form">
-                        <h2 style="color:green;font-size:16px;"><b>Connectez-vous à votre compte client</b></h2>
+                        <h2 style="color:green;font-size:16px;"><b>Connectez-vous à votre compte</b></h2>
                         <span style="color:red;"><?php echo $message; ?></span>
                         <span style="color:green;"><?php echo $success; ?></span>
                         <form action="" method="post">

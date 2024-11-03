@@ -3,7 +3,7 @@
 $servername = "localhost"; 
 $username = "root"; 
 $password = ""; 
-$dbname = "purebio"; 
+$dbname = "ouma_art"; 
 
 $db = mysqli_connect($servername, $username, $password, $dbname);  
 if (!$db) {     

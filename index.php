@@ -2,107 +2,96 @@
 <html lang="zxx">
 
 <head>
-  <title>Pure Bio</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="keywords" content="PureBio" />
-  <script>
-    addEventListener("load", function () {
-      setTimeout(hideURLbar, 0);
-    }, false);
+    <title>Ouma Art</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="OumaArt" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
 
-    function hideURLbar() {
-      window.scrollTo(0, 1);
-    }
-  </script>
-  
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
- 
-  <link href="css/font-awesome.min.css" rel="stylesheet">
- 
-  <link href="css/style.css" rel='stylesheet' type='text/css' media="all">
-  
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
-  <link href="//fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
-  <link href="//fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel='stylesheet' type='text/css' media="all">
+    <link href="//fonts.googleapis.com/css?family=Raleway:400,500,600,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
 </head>
 
 <body>
 
-  <div class="banner-left-side" id="home">
-    <div class="headder-top">
-      <?php
-session_start();
-if(isset($_SESSION['user_id'])) {
-?>
-  <nav>
-  <div id="logo">
-    <h1 ><a href="index.php" style="color:white;">PB</a></h1>
-  </div>
-  <div class="sub-headder position-relative">
-    <h6 ><a href="index.php" style="color:#F3BC48">Pure<br>Bio</a></h6>
-  </div>
-  <label for="drop" class="toggle">Menu</label>
-  <input type="checkbox" id="drop">
-  <ul class="menu mt-2">
-    <li class="active"><a href="index.php">Acceuil</a></li>
-    <li><a href="#about">A propos nous</a></li>
-    <li><a href="#service">Catégories</a></li>
-    <li><a href="your_orders.php">Mes Commandes</a></li>
-    <li><a href="#blog">Actualités</a></li>
-    <li><a href="logout.php">Logout</a></li>
-    
-  </ul>
-</nav>
+    <div class="banner-left-side" id="home">
+        <div class="headder-top">
+            <?php
+            session_start(); // Assurez-vous que la session est démarrée
 
-<?php
-} else {
-?>
-  <nav>
-    <div id="logo">
-      <h1><a href="index.php" >PB</a></h1>
-    </div>
-    <div class="sub-headder position-relative">
-      <h6><a href="index.html">Pure<br>Bio</a></h6>
-    </div>
-    <label for="drop" class="toggle">Menu</label>
-    <input type="checkbox" id="drop">
-    <ul class="menu mt-2">
-      <li class="active"><a href="index.php">Acceuil</a></li>
-      <li><a href="#about">A propos nous</a></li>
-      <li><a href="#service">Catégories</a></li>
-      <li><a href="#blog">Actualités</a></li>
-      <li>
-      <a href="#">Login &#9662;</a>
-      <ul class="sub-menu">
-        <li><a href="loginF.php">Fournisseur</a></li>
-        <li><a href="login.php">Client</a></li>
-      </ul>
-    </li>
-    </ul>
-  </nav>
-<?php
-}
-?>
+            // Vérifiez si l'utilisateur est connecté
+            if (isset($_SESSION['id'])) {
+                // Menu pour les utilisateurs connectés
+                ?>
+                <nav>
+                    <div id="logo">
+                        <h1><a href="index.php" style="color:white;">OA</a></h1>
+                    </div>
+                    <div class="sub-headder position-relative">
+                        <h6><a href="index.php" style="color:#F3BC48">Ouma<br>Art</a></h6>
+                    </div>
+                    <label for="drop" class="toggle">Menu</label>
+                    <input type="checkbox" id="drop">
+                    <ul class="menu mt-2">
+                        <li class="active"><a href="index.php">Accueil</a></li>
+                        <li><a href="#about">À propos nous</a></li>
+                        <li><a href="#service">Catégories</a></li>
+                        <li><a href="your_orders.php">Mes Commandes</a></li>
+                        <li><a href="#blog">Actualités</a></li>
+                        <li><a href="logout.php">Déconnexion</a></li>
+                    </ul>
+                </nav>
+                <?php
+            } else {
+                // Menu pour les utilisateurs non connectés
+                ?>
+                <nav>
+                    <div id="logo">
+                        <h1><a href="index.php">OA</a></h1>
+                    </div>
+                    <div class="sub-headder position-relative">
+                        <h6><a href="index.html">Ouma<br>Art</a></h6>
+                    </div>
+                    <label for="drop" class="toggle">Menu</label>
+                    <input type="checkbox" id="drop">
+                    <ul class="menu mt-2">
+                        <li class="active"><a href="index.php">Accueil</a></li>
+                        <li><a href="#about">À propos nous</a></li>
+                        <li><a href="#service">Catégories</a></li>
+                        <li><a href="#blog">Actualités</a></li>
+                        <li><a href="login.php">Connexion</a></li>
+                    </ul>
+                </nav>
+                <?php
+            }
+            ?>
+       
 
     </div>
     <div class="main-banner text-center">
       <div class="container">
         <div class="social-icons mb-lg-4 mb-3">
           <ul>
-            <li class="facebook">
-              <a href="#">
-                <span class="fa fa-facebook"></span>
-              </a>
-            </li>
-            <li class="twitter">
-              <a href="#">
-                <span class="fa fa-twitter"></span>
+            <li class="rss">
+              <a href="https://www.tiktok.com/@ouma.art_">
+              <span><i class="fa-brands fa-tiktok"></i></span>
               </a>
             </li>
             <li class="rss">
-              <a href="#">
+              <a href="https://www.instagram.com/ouma.art__/">
                 <span class="fa fa-instagram"></span>
               </a>
             </li>
@@ -110,10 +99,10 @@ if(isset($_SESSION['user_id'])) {
         </div>
         <div class="banner-right-txt">
           <h5 class="mb-sm-3 mb-2"></h5>
-          <h4> PureBio </h4>
+          <h4> Ouma_Art </h4>
         </div>
         <div class="slide-info-txt">
-          <p style="color:white">Le pouvoir de la nature, simplement pour vous...</p>
+          <p style="color:white">L’art fait main, unique et personnalisé pour votre espace…</p>
         </div>
       </div>
     </div>
@@ -122,30 +111,24 @@ if(isset($_SESSION['user_id'])) {
     <div class="container py-lg-5 py-md-4 py-sm-4 py-3">
       <h3 class="title text-center mb-2">à propos de nous</h3>
       <div class="title-w3ls-text text-center mb-lg-5 mb-md-4 mb-sm-4 mb-3">
-        <p>Un magasin bio propose des produits naturels et biologiques, cultivés sans pesticides ni additifs
-          artificiels. On y trouve des fruits, légumes, produits laitiers, viandes, poissons et articles de soins
-          écologiques.
+        <p> Découvrez des tableaux et des Gorgef(s) personnalisés, façonnés avec soin et passion. Chaque pièce est unique, conçue pour refléter votre style et enrichir votre espace avec une touche d’authenticité et de créativité artisanale.
         </p>
       </div>
       <div class="row">
         <div class="col-lg-5 video-info-img text-center position-relative">
           <div class="abut-img-w3l">
-            <img src="images/bb1.jpg" alt="" class="img-fluid">
+            <img src="images/ouma.jpeg" alt="" class="img-fluid">
           </div>
           <div class="abut-img-two">
-            <img src="images/bb3.jpg" alt="" class="img-fluid">
+            <img src="images/ouma1.jpeg" alt="" class="img-fluid">
           </div>
         </div>
         <div class="col-lg-7 left-abut-txt ">
           <div class="about-right-grid">
-            <h2 class="mb-3">Notre nourriture devrait être notre médicament, nos médicaments biologiques devraient être
-              notre nourriture pour votre santé</h2>
-            <p>Bienvenue sur notre marché en ligne de produits biologiques ! Nous offrons une plateforme pratique pour
-              les vendeurs et les acheteurs de produits naturels, biologiques et écologiques. En tant que vendeur, créez
-              facilement un compte et mettez vos produits en vente pour atteindre un large public de consommateurs
-              conscients. En tant qu'acheteur, parcourez une variété de produits de différents vendeurs, tout en
-              soutenant les petites entreprises et les pratiques écologiques. Rejoignez notre communauté dès aujourd'hui
-              pour vivre un mode de vie plus sain et durable !</p>
+            <h2 class="mb-3">Bienvenue sur Ouma_art, votre boutique en ligne dédiée aux créations artisanales uniques !</h2>
+            <p>Nous vous invitons à découvrir des tableaux et des gorgefs personnalisés, faits main avec passion et soin. Explorez notre collection variée, choisissez des œuvres qui résonnent avec votre style,
+               et personnalisez-les pour en faire des pièces uniques. Chez Ouma_art, chaque création est un hommage au savoir-faire artisanal. 
+               Rejoignez notre communauté et laissez-vous inspirer par la beauté de l’art fait main qui enrichira votre intérieur !</p>
           </div>
         </div>
       </div>
@@ -340,8 +323,8 @@ if(isset($_SESSION['user_id'])) {
                   <h6>Adresse</h6>
                 </li>
                 <li>
-                  <p>ISET RADES,
-                    <br>L2DSI1.
+                  <p>
+                    La Manouba , Tunis<br>
                   </p>
                 </li>
               </ul>
@@ -350,14 +333,14 @@ if(isset($_SESSION['user_id'])) {
                   <h6>N° Télephone</h6>
                 </li>
                 <li>
-                  <p>+ (216) 77 567 901</p>
+                  <p>+ (216) 53.107.137</p>
                 </li>
                 <li class="my-2">
                   <h6>Email</h6>
                 </li>
                 <li>
                   <p>
-                    <a href="mailto:MN@gmail.com">MN@gmail.com</a>
+                    <a href="mailto:oumaymamsaadya@gmail.com">oumaymamsaadya@gmail.com</a>
                   </p>
                 </li>
               </ul>
@@ -367,33 +350,41 @@ if(isset($_SESSION['user_id'])) {
         <div class="footer-bottom-info col-lg-4 col-md-4 ">
           <h4 class="pb-lg-4 pb-md-3 pb-3 ">Contactez-nous</h4>
           <div class="footer-office-hour">
-            <ul>
-              <li>
-                <p>Contactez-nous sur le TWITTER</p>
-              </li>
-              <li class="my-1">
-                <p>
-                  <a href="mailto:MN@gmail.com">MN@gmail.com.com</a>
-                </p>
-              </li>
-              <li class="mb-3">
-                <span class="font-italic">NOUR EL HOUDA SAMMARI</span>
-              </li>
-              <li>
-                <p>
-                  noursam2365@gmail.com<br> 
-                  nefzimalek@gmail.com
-                </p>
-              </li>
-              <li class="my-1">
-                <p>
-                  <a href="mailto:info@example.com">MN@GMAIL.com</a>
-                </p>
-              </li>
-              <li>
-                <span class="font-italic">NEFZI MALEK</span>
-              </li>
-            </ul>
+          <ul>
+  <li>
+    <p>Contactez-nous sur :</p>
+  </li>
+  
+  <li class="my-1">
+    <!-- Lien vers Instagram -->
+    <a href="https://www.instagram.com/ouma.art__" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-instagram"></i> Instagram
+    </a>
+  </li>
+  
+  <li class="my-1">
+    <!-- Lien vers WhatsApp -->
+    <a href="https://wa.me/numéro_de_téléphone" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+  </li>
+  
+  <li class="my-1">
+    <!-- Lien vers TikTok -->
+    <a href="https://www.tiktok.com/@ouma.art_" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-tiktok"></i> TikTok
+    </a>
+  </li>
+
+  <li class="my-1">
+    <!-- Lien vers Gmail (e-mail) -->
+    <a href="mailto:oumaymamsaadya@gmail.com">
+      <i class="fas fa-envelope"></i> oumaymamsaadya@gmail.com
+    </a>
+  </li>
+</ul>
+
+
           </div>
         </div>
         <div class="footer-bottom-info col-lg-4 col-md-4 ">

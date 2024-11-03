@@ -1,68 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-
 session_start(); 
 error_reporting(0); 
 include("connection/connect.php"); 
-if(isset($_POST['submit'] )) 
-{
-     if(empty($_POST['firstname']) || 
-   	    empty($_POST['lastname'])|| 
-		empty($_POST['email']) ||  
-		empty($_POST['phone'])||
-		empty($_POST['password'])||
-		empty($_POST['cpassword']) ||
-		empty($_POST['cpassword']))
-		{
-			$message = "All fields must be Required!";
-		}
-	else
-	{
-	
-	$check_username= mysqli_query($db, "SELECT username FROM users where username = '".$_POST['username']."' ");
-	$check_email = mysqli_query($db, "SELECT email FROM users where email = '".$_POST['email']."' ");
-		
 
-	
-	if($_POST['password'] != $_POST['cpassword']){  
-       	
-          echo "<script>alert('Password not match');</script>"; 
-    }
-	elseif(strlen($_POST['password']) < 6)  
-	{
-      echo "<script>alert('Password Must be >=6');</script>"; 
-	}
-	elseif(strlen($_POST['phone']) < 10)  
-	{
-      echo "<script>alert('Invalid phone number!');</script>"; 
-	}
-
-    elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) 
+if(isset($_POST['submit'])) {
+    if(empty($_POST['firstname']) || 
+       empty($_POST['lastname']) || 
+       empty($_POST['email']) ||  
+       empty($_POST['phone']) || 
+       empty($_POST['password']) || 
+       empty($_POST['cpassword']) || 
+       empty($_POST['address'])) 
     {
-          echo "<script>alert('Invalid email address please type a valid email!');</script>"; 
-    }
-	elseif(mysqli_num_rows($check_username) > 0) 
-     {
-       echo "<script>alert('Username Already exists!');</script>"; 
-     }
-	elseif(mysqli_num_rows($check_email) > 0) 
-     {
-       echo "<script>alert('Email Already exists!');</script>"; 
-     }
-	else{
-       
-	 
-	$mql = "INSERT INTO users(username,f_name,l_name,email,phone,password,address) VALUES('".$_POST['username']."','".$_POST['firstname']."','".$_POST['lastname']."','".$_POST['email']."','".$_POST['phone']."','".md5($_POST['password'])."','".$_POST['address']."')";
-	mysqli_query($db, $mql);
-	
-		 header("refresh:0.1;url=login.php");
-    }
-	}
+        $message = "Tous les champs sont requis!";
+    } 
+    else {
+        // Validation des données existantes
+        $check_username= mysqli_query($db, "SELECT username FROM users WHERE username = '".$_POST['username']."' ");
+        $check_email = mysqli_query($db, "SELECT email FROM users WHERE email = '".$_POST['email']."' ");
+        
+        if($_POST['password'] != $_POST['cpassword']) {
+            echo "<script>alert('Les mots de passe ne correspondent pas');</script>";
+        } 
+        elseif(strlen($_POST['password']) < 6) {
+            echo "<script>alert('Le mot de passe doit contenir au moins 6 caractères');</script>";
+        } 
+        elseif(strlen($_POST['phone']) < 8) {
+            echo "<script>alert('Numéro de téléphone invalide!');</script>";
+        } 
+        elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            echo "<script>alert('Adresse email invalide');</script>";
+        } 
+        elseif(mysqli_num_rows($check_username) > 0) {
+            echo "<script>alert('Nom d'utilisateur déjà existant');</script>";
+        } 
+        elseif(mysqli_num_rows($check_email) > 0) {
+            echo "<script>alert('Email déjà existant');</script>";
+        } 
+        else {
+            // Insertion dans la base de données avec type_utilisateur = 'client'
+            $mql = "INSERT INTO users(username, f_name, l_name, email, phone, password, address, type_utilisateur) 
+                    VALUES('".$_POST['username']."', '".$_POST['firstname']."', '".$_POST['lastname']."', 
+                           '".$_POST['email']."', '".$_POST['phone']."', '".md5($_POST['password'])."', 
+                           '".$_POST['address']."', 'client')";
+            mysqli_query($db, $mql);
 
+            echo "<script>alert('Inscription réussie! Vous pouvez maintenant vous connecter.');</script>";
+            header("refresh:0.1;url=login.php");
+        }
+    }
 }
-
-
 ?>
 <head>
     <meta charset="utf-8">
@@ -198,21 +187,18 @@ textarea {
     <header id="header" class="header-scroll top-header headrom">
     <nav>
     <div id="logo">
-      <h1><a href="index.php" style="color:white;">PB</a></h1>
+      <h1><a href="index.php" style="color:white;">OA</a></h1>
     </div>
     <div class="sub-headder position-relative">
-      <h6><a href="index.php" style="color:#F3BC48">Pure<br>Bio</a></h6>
+      <h6><a href="index.php" style="color:#F3BC48">Ouma<br>Art</a></h6>
     </div>
     <label for="drop" class="toggle">Menu</label>
     <input type="checkbox" id="drop">
     <ul class="menu mt-2">
       <li class="active"><a href="index.php">Acceuil</a></li>
       <li>
-      <a href="#">Login &#9662;</a>
-      <ul class="sub-menu">
-        <li><a href="loginF.php">Fournisseur</a></li>
-        <li><a href="login.php">Client</a></li>
-      </ul>
+      <a href="login.php">Login &#9662;</a>
+    
     </li>
     </ul>
   </nav>
